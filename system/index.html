@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c2d">
+  <title>TM Casework — Analyst review</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="/" aria-label="TM Casework home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-copy"><strong>CASEWORK</strong><small>TRANSACTION MONITORING</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav">
+        <a class="nav-item active" href="#review"><span class="nav-icon icon-inbox">▤</span><span>Case review</span><span class="nav-count" id="nav-total">—</span></a>
+        <a class="nav-item" href="#queue"><span class="nav-icon">⌕</span><span>Investigation queue</span></a>
+        <a class="nav-item" href="#evidence"><span class="nav-icon">◈</span><span>Evidence trail</span></a>
+      </nav>
+      <div class="side-label policy-label">POLICY CONTEXT</div>
+      <div class="policy-card">
+        <div class="policy-top"><span class="policy-dot"></span><span id="policy-name">Bank SOP</span></div>
+        <p id="policy-note">Institution-specific thresholds and rules are applied to every case.</p>
+        <div class="policy-meta"><span class="pulse-dot"></span><span>POLICY LOADED</span></div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="safe-note"><span class="shield">✓</span><span><strong>Evidence first</strong><small>Every disposition has a traceable basis.</small></span></div>
+        <div class="side-footer"><span>LOCAL REVIEW ENVIRONMENT</span><span>v1.0.0</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area" id="review">
+      <header class="topbar">
+        <div class="breadcrumbs"><span>Monitoring</span><span class="crumb-slash">/</span><strong>Case review</strong></div>
+        <div class="top-actions">
+          <label class="institution-picker"><span class="sr-only">Institution</span>
+            <span class="picker-icon">⌂</span>
+            <select id="institution-select" aria-label="Select institution">
+              <option value="bank">Bank</option>
+              <option value="emoney">E-money</option>
+              <option value="investment">Investment</option>
+              <option value="payments_fx">Payments &amp; FX</option>
+            </select>
+            <span class="select-chevron">⌄</span>
+          </label>
+          <span class="system-status"><span></span> System ready</span>
+        </div>
+      </header>
+
+      <section class="page-intro">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-bar"></span> FINANCIAL CRIME OPERATIONS</div>
+          <h1>Case review</h1>
+          <p>Review the activity, follow the evidence, and understand the recommended disposition.</p>
+        </div>
+        <div class="intro-date"><span class="date-icon">◷</span><span><small>REVIEW WINDOW</small><strong id="review-window-label">Institution dataset</strong></span></div>
+      </section>
+
+      <section class="metrics" aria-label="Case summary">
+        <article class="metric-card metric-total"><div class="metric-label">TOTAL CASES <span class="metric-glyph">▦</span></div><div class="metric-value" id="metric-total">—</div><div class="metric-foot"><span class="metric-foot-dot"></span><span>Development set</span></div></article>
+        <article class="metric-card metric-close"><div class="metric-label">CLOSE <span class="metric-glyph">✓</span></div><div class="metric-value" id="metric-close">—</div><div class="metric-foot">Evidence reconciled</div></article>
+        <article class="metric-card metric-rfi"><div class="metric-label">REQUEST INFO <span class="metric-glyph">?</span></div><div class="metric-value" id="metric-rfi">—</div><div class="metric-foot">Specific follow-up needed</div></article>
+        <article class="metric-card metric-escalate"><div class="metric-label">ESCALATE <span class="metric-glyph">↗</span></div><div class="metric-value" id="metric-escalate">—</div><div class="metric-foot">MLRO review required</div></article>
+      </section>
+
+      <section class="review-layout" id="queue">
+        <aside class="queue-panel panel">
+          <div class="queue-head">
+            <div><div class="panel-kicker">WORKLIST</div><h2>Cases <span id="queue-count">—</span></h2></div>
+            <button class="icon-button" id="refresh-button" type="button" title="Refresh case list" aria-label="Refresh case list">↻</button>
+          </div>
+          <div class="queue-tools">
+            <label class="search-box"><span class="search-icon">⌕</span><input id="search-input" type="search" placeholder="Search cases or customers" autocomplete="off"><kbd>⌘ K</kbd></label>
+            <label class="filter-select"><span class="sr-only">Filter cases by disposition</span><select id="verdict-filter"><option value="ALL">All dispositions</option><option value="CLOSE">Close</option><option value="RFI">Request info</option><option value="ESCALATE">Escalate</option><option value="PENDING">Pending output</option></select><span>⌄</span></label>
+          </div>
+          <div class="queue-list" id="case-list" role="listbox" aria-label="Cases">
+            <div class="loading-state"><span class="loader"></span>Loading cases…</div>
+          </div>
+          <div class="queue-foot"><span class="queue-live"><i></i> LIVE DATA</span><span id="queue-foot-count">—</span></div>
+        </aside>
+
+        <section class="case-panel panel" aria-live="polite">
+          <div class="case-content" id="case-content">
+            <div class="empty-state"><div class="empty-orbit"><span>◈</span></div><h2>Select a case to review</h2><p>Choose a case from the worklist to see its alerts, transactions, evidence, and disposition.</p></div>
+          </div>
+        </section>
+      </section>
+      <footer class="main-footer"><span>CASEWORK <span class="footer-sep">·</span> EVIDENCE-LINKED REVIEW</span><span>Decision output is read-only in this prototype</span></footer>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
